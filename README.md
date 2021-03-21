@@ -1,3 +1,8 @@
+# Fork Note
+
+This fork is for personal use, to attempt to correct the LFO button colors on my DIY build.
+
+
 # Spherical Wavetable Navigator
 
 Firmware for the Spherical Wavetable Navigator, a Eurorack-format module from 4ms Company.
