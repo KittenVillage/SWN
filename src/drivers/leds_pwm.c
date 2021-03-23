@@ -116,6 +116,7 @@ void set_pwm_led(uint8_t led_id, const o_rgb_led *rgbled)
 		pwmleds[buf][chip_num][red_led_element] = r<<16;
 		pwmleds[buf][chip_num][red_led_element+2] = g<<16;
 		pwmleds[buf][chip_num][red_led_element+1] = b<<16;
+	}
 	else {
 		pwmleds[buf][chip_num][red_led_element] = r<<16;
 		pwmleds[buf][chip_num][red_led_element+1] = g<<16;
