@@ -44,6 +44,11 @@ uint32_t pwmleds[2][NUM_PWM_LED_CHIPS][NUM_LEDS_PER_CHIP];
 void pwm_leds_display_off(void){	LED_RING_ON();	}
 void pwm_leds_display_on(void){		LED_RING_OFF();	}
 
+// b-g fix function
+// Private
+uint8_t check_button_led(uint8_t led_id);
+
+
 void init_pwm_leds(void)
 {
 	uint8_t led, chip;
@@ -106,9 +111,16 @@ void set_pwm_led(uint8_t led_id, const o_rgb_led *rgbled)
 	uint8_t chip_num = get_chip_num(led_id);
 	uint8_t buf = best_write_buf(chip_num);
 
-	pwmleds[buf][chip_num][red_led_element] = r<<16;
-	pwmleds[buf][chip_num][red_led_element+1] = g<<16;
-	pwmleds[buf][chip_num][red_led_element+2] = b<<16;
+// if-else here to correct b-g on DIY build TC002-N11AS2XT-RGB button
+	if (check_button_led(led_id)) {
+		pwmleds[buf][chip_num][red_led_element] = r<<16;
+		pwmleds[buf][chip_num][red_led_element+2] = g<<16;
+		pwmleds[buf][chip_num][red_led_element+1] = b<<16;
+	else {
+		pwmleds[buf][chip_num][red_led_element] = r<<16;
+		pwmleds[buf][chip_num][red_led_element+1] = g<<16;
+		pwmleds[buf][chip_num][red_led_element+2] = b<<16;
+	}
 
 }
 
@@ -132,4 +144,11 @@ void set_single_pwm_led(uint8_t single_element_led_id, uint16_t brightness)
 
 	pwmleds[buf][chip_num][led_element] = b << 16;
 
+}
+
+// b-g fix function
+uint8_t check_button_led(uint8_t led_id)
+{
+  return ((led_id == 7) ||
+          (led_id == 19)) ? 1 : 0;
 }
