@@ -1,6 +1,9 @@
 # Fork Note
 
-This fork is for personal use, to attempt to correct the LFO button colors on my DIY build.
+This fork is for personal use, to attempt to correct the blue-green LFO button colors on my DIY build. (Built using 8 TC002-N11AS2XT-RGB buttons.) The code was provided to me from someone else, author unknown. Check the bottom of leds_pwm.c
+
+Confirmed working (using MacOS as a build environment) but could not flash a combo hex with wavetable loading built using this base. This is fine to flash (without flash erase) after Forestcaver's combo hex per his PDF file on the facebook group. 
+
 
 
 # Spherical Wavetable Navigator
