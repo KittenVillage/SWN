@@ -111,7 +111,7 @@ void set_pwm_led(uint8_t led_id, const o_rgb_led *rgbled)
 	uint8_t chip_num = get_chip_num(led_id);
 	uint8_t buf = best_write_buf(chip_num);
 
-// if-else here to correct b-g on DIY build TC002-N11AS2XT-RGB button
+// if-else here to correct blue-geen on DIY build TC002-N11AS2XT-RGB button
 	if (check_button_led(led_id)) {
 		pwmleds[buf][chip_num][red_led_element] = r<<16;
 		pwmleds[buf][chip_num][red_led_element+2] = g<<16;
@@ -149,8 +149,18 @@ void set_single_pwm_led(uint8_t single_element_led_id, uint16_t brightness)
 
 
 // b-g fix function
+// The top row buttons are 0, 3, 4, 5, 6, 9
+// The lfo buttons are 7 and 19.
 uint8_t check_button_led(uint8_t led_id)
 {
-  return ((led_id == 7) ||
-          (led_id == 19)) ? 1 : 0;
+
+//	return ((led_id == 0) ||
+//			(led_id == 3) ||
+//			(led_id == 4) ||
+//			(led_id == 5) ||
+//			(led_id == 6) ||
+//			(led_id == 9)) ? 1 : 0;
+
+	return ((led_id == 7) ||
+			(led_id == 19)) ? 1 : 0;
 }
