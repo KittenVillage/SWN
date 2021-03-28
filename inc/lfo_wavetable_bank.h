@@ -33,7 +33,7 @@
 #define 	LFO_TABLELEN 	256 			//Must be a power of 2
 #define 	F_LFO_TABLELEN 	256.0
 #define	 	F_MAX_LFO_TABLELEN	(float)(F_LFO_TABLELEN - 1.0)	
-#define 	NUM_LFO_SHAPES  25 
+#define 	NUM_LFO_SHAPES  28 
 #define 	MAX_LFO_WT_VAL 	256
 #define 	KEY_SHAPE		0
 	

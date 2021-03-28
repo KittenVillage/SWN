@@ -46,7 +46,7 @@
 #define NUM_NOTES 			12
 #define NUM_CHORDS			26
 #define NUM_WTSEL_SPREADS	18
-#define NUM_SCALES			2
+#define NUM_SCALES			11
 #define NOTES_PER_SCALE		NUM_OUTRING_LEDS +1
 #define NUM_DISPPAT			6
 
