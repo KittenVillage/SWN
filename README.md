@@ -1,10 +1,15 @@
 # Fork Note
 
-This fork is for personal use, to attempt to correct the blue-green LFO button colors on my DIY build. (Built using 8 TC002-N11AS2XT-RGB buttons.) The code was provided to me from someone else, author unknown. Check the bottom of leds_pwm.c
+This fork is for personal use, to attempt to correct the blue-green LFO button colors on my DIY build. (Built using 8 TC002-N11AS2XT-RGB buttons.) The code was provided to me from someone else, author unknown. If you are looking to compile the code to fix your DIY build's buttons, just use the code in  src/drivers/leds_pwm.c
 
-Confirmed working (using MacOS as a build environment) but could not flash a combo hex with wavetable loading built using this base. This is fine to flash (without flash erase) after Forestcaver's combo hex per his PDF file on the facebook group. 
+Button color fix confirmed working (using MacOS as a build environment) but could not flash a combo hex with wavetable loading built using this base. This is fine to flash (without flash erase) after Forestcaver's combo hex per his PDF file on the facebook group. 
 
+## Update March 28 2021 
+There may be some additional changed files in this repo. You probably shouldn't use this repo past this point. I plan on adding the extra LFOs and scales from
+https://github.com/tsointsoin/SWN
+which is a wonderful addition to the firmware. Go try that if you want some extra sounds out of your SWN.
 
+If I can, I'm going to add some extra wavetables loaded with the combo hex, while preserving the first 12 factory ones. (So that wavetables loaded past these are not set as factory ones and can be erased!) But currently it's a known issue that version 2.2 hangs when one tries to load factory wavetables to flash, so I'm going to see if I can add some button color changes to see where it's hanging.
 
 # Spherical Wavetable Navigator
 
