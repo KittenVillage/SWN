@@ -51,16 +51,22 @@
 
 
 const enum colorCodes qtz_scale_colors[NUM_QTZ_SCALES] = {
-	ledc_WHITE,				// NO QTZ
+	ledc_WHITE,					// NO QTZ
 	ledc_PURPLE,				// SEMITONE
 	ledc_YELLOW,				// MAJOR
 	ledc_DIM_YELLOW,			// MINOR HARMONIC
 	ledc_DEEP_BLUE,				// MAJOR_PENTATONIC
 	ledc_MED_BLUE,				// MINOR_PENTATONIC
-	ledc_GREEN,				// OCTATONIC1
+	ledc_GREEN,					// OCTATONIC1
 	ledc_DIM_GREEN,				// OCTATONIC2
 	ledc_FULLRED,				// LYDIAN
-	ledc_DIM_RED				// MIXOLYDIAN
+	ledc_DIM_RED,				// MIXOLYDIAN
+	ledc_GOLD,					// DORIAN
+	ledc_BUTTERCUP,				// LOCRIAN
+	ledc_BLUE,					// AEOLIAN
+	ledc_FUSHIA,				// BEBOP MAJOR
+	ledc_CORAL,				// BEBOP MINOR
+	ledc_PINK				// BLUES
 };
 
 
@@ -74,7 +80,13 @@ const uint8_t num_qtz_steps[NUM_QTZ_SCALES] = {
 	8,					// OCTATONIC1
 	8,					// OCTATONIC2
 	7,					// LYDIAN
-	7					// MIXOLYDIAN
+	7,					// MIXOLYDIAN
+	7,					// DORIAN
+	7,					// LOCRIAN
+	7,					// AEOLIAN
+	8,					// BEBOP MAJOR
+	8,					// BEBOP MINOR
+	7					// BLUES
 
 };
 
@@ -112,7 +124,7 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		30.8676953125	// B
 	},
 
-// MINOR HARMONIC
+// MINOR HARMONIC (AEOLIAN)
 	{
 		16.3516015625,	// C
 		18.3540234375,	// D
@@ -122,7 +134,7 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		25.9565625,	// G#
 		30.8676953125	// B
 	},
-        
+
 // MAJOR_PENTATONIC
         {
 		16.3516015625,	// C
@@ -141,7 +153,7 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		29.135234375	// A#
         },
 
-// OCTATONIC 1
+// OCTATONIC 1 (whole half Diminished)
         {
 		16.3516015625,	// C
 		18.3540234375,	// D
@@ -153,7 +165,7 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		30.8676953125	// B
         },
 
-// OCTATONIC2
+// OCTATONIC2 (half whole Diminished)
         {
 		16.3516015625,	// C
 		17.32390625,	// C#
@@ -185,7 +197,73 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		24.4997265625,	// G
 		27.50,		// A
 		29.135234375	// A#
-        }
+        },
+// DORIAN
+        {
+		16.3516015625,  // C0
+		18.3540234375,  // D
+		19.4454296875,  // D#
+		21.8267578125,  // F
+		24.4997265625,  // G
+		27.50,          // A
+		29.135234375,   // A#
+	},
+
+// LOCRIAN
+        {
+		16.3516015625,  // C0
+		17.32390625,    // C#
+		19.4454296875,  // D#
+		21.8267578125,  // F
+		23.1246484375,  // F#
+		25.9565625,     // G#
+		29.135234375,   // A#
+	},
+
+// AEOLIAN
+	{
+		16.3516015625,	// C
+		18.3540234375,	// D
+		19.4454296875,	// D#
+		21.8267578125,	// F
+		24.4997265625,	// G
+		25.9565625,     // G#
+		29.135234375,   // A#
+	},
+// BEBOP MAJOR
+        {
+		16.3516015625,  // C0
+		18.3540234375,  // D
+		20.60171875,    // E
+		21.8267578125,  // F
+		24.4997265625,  // G
+		25.9565625,     // G#
+		27.50,          // A
+		30.8676953125   // B
+	},
+// BEBOP MINOR
+        {
+		16.3516015625,  // C0
+		18.3540234375,  // D
+		19.4454296875,  // D#
+		20.60171875,    // E
+		21.8267578125,  // F
+		24.4997265625,  // G
+		27.50,          // A
+		29.135234375,   // A#
+	},
+// BLUES
+        {
+		16.3516015625,  // C0
+		18.3540234375,  // D
+		19.4454296875,  // D#
+		21.8267578125,  // F
+		24.4997265625,  // G
+		25.9565625,     // G#
+		30.8676953125   // B
+	}
+
+
 };
 
 
