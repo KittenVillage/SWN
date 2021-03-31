@@ -4,10 +4,16 @@ This fork is for personal use, to attempt to correct the blue-green LFO button c
 
 Confirmed working (using MacOS as a build environment) but could not flash a combo hex with wavetable loading built using this base. This is fine to flash (without flash erase) after Forestcaver's combo hex per his PDF file on the facebook group. 
 
-## Update March 28 2021 
+## Update March 30 2021 
 There may be some additional changed files in this repo. You probably shouldn't use this repo past this point. This fork is for the extra LFOs and scales from
 https://github.com/tsointsoin/SWN
 which is a wonderful addition to the firmware. Go try that if you want some extra sounds out of your SWN. I am trying to add to that fork with this branch.
+
+Edit: This branch has 6 more scales added on, and if safe to compile, but you may want to roll back the button fix change I have in /src/drivers/leds_pwm.c
+
+I am also finding that scales do save with presets, but I don't expect that to be the case if you revert back to the official firmware. (Best erase those presets!)
+
+I will be adding all the LFO shapes I can, but it may be a while. 
 
 
 # Spherical Wavetable Navigator
