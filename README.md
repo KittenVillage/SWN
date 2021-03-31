@@ -11,6 +11,10 @@ which is a wonderful addition to the firmware. Go try that if you want some extr
 
 If I can, I'm going to add some extra wavetables loaded with the combo hex, while preserving the first 12 factory ones. (So that wavetables loaded past these are not set as factory ones and can be erased!) But currently it's a known issue that version 2.2 hangs when one tries to load factory wavetables to flash, so I'm going to see if I can add some button color changes to see where it's hanging.
 
+(And nope, I have no idea why wavetable loading hangs.)
+
+Look for another brach on this git for more scales and LFOs!
+
 # Spherical Wavetable Navigator
 
 Firmware for the Spherical Wavetable Navigator, a Eurorack-format module from 4ms Company.
