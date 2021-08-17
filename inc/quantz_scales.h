@@ -45,8 +45,14 @@ enum scaleMap{
 	sclm_OCTATONIC2,	//7
 	sclm_LYDIAN,		//8
 	sclm_MIXOLYDIAN,	//9
+	sclm_DORIAN,	//10
+	sclm_LOCRIAN,	//11
+	sclm_AEOLIAN,	//12
+	sclm_BEBOP_MAJOR,		//13
+	sclm_BEBOP_MINOR,	//14
+	sclm_BLUES,	//15
 
-	NUM_QTZ_SCALES		//10
+	NUM_QTZ_SCALES		//16
 };
 
 void init_quantz_scales(void);

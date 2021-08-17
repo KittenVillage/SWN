@@ -62,6 +62,7 @@
 #define NUM_OUTRING_LEDS	18
 #define NUM_LEDLINE_LEDS	6
 #define NUM_CHANNELS 		6
+#define NUM_STEPS 			4			// Number of steps in the Fugue sequence
 
 #define TICKS_PER_MS 	8
 

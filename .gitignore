@@ -1,6 +1,6 @@
 wavetable/libraries/wavefiles/*
-build/
-*.wav
+build
+#*.wav
 local/
 LOCAL/
 \.DS_Store

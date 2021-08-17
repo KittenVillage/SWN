@@ -46,7 +46,7 @@
 #define NUM_NOTES 			12
 #define NUM_CHORDS			26
 #define NUM_WTSEL_SPREADS	18
-#define NUM_SCALES			11
+#define NUM_SCALES			17
 #define NOTES_PER_SCALE		NUM_OUTRING_LEDS +1
 #define NUM_DISPPAT			6
 
@@ -149,6 +149,10 @@ typedef struct o_calc_params{
 
 	uint8_t 	prev_qtz_note			[NUM_CHANNELS];
 	int8_t 		prev_qtz_oct			[NUM_CHANNELS];
+
+	uint8_t		fugue_step					[NUM_CHANNELS];
+	uint8_t		fugue_direction				[NUM_CHANNELS];
+	uint8_t		fugue_mode					[NUM_CHANNELS];
 
 	// FLAGS
 	uint8_t 	already_handled_button 	[NUM_CHANNELS + 2];

@@ -338,6 +338,10 @@ void init_calc_params(void)
 		calc_params.prev_qtz_oct[chan] = 0xFF;
 		calc_params.gate_in_is_sustaining[chan] = 0;
 
+		calc_params.fugue_step[chan] = chan;
+		calc_params.fugue_direction[chan] = 0;  // TODO: Make a button combo to set these.
+		calc_params.fugue_mode[chan] = 0;		// TODO: Make a button combo to set these.
+
 		for (j = 0; j < NUM_ARM_FLAGS; j++)
 			calc_params.armed[j][chan] = 0;
 
@@ -1136,13 +1140,14 @@ void update_transpose_cv(void)
 	params.transpose_cv = calc_expo_pitch(TRANSPOSE_CV, analog[TRANSPOSE_CV].lpf_val);
 }
 
-void update_pitch(uint8_t chan)
+void update_pitch(uint8_t chan_input)
 {
 	float ch_freq, ch_freq_adc, qtz_ch_freq;
 	uint8_t note;
 	int8_t oct;
 	int16_t oct_clamped;
 
+	uint8_t chan = calc_params.fugue_step[chan_input];
 	if ( params.key_sw[chan]==ksw_MUTE || params.key_sw[chan]==ksw_KEYS_EXT_TRIG_SUSTAIN || params.key_sw[chan]==ksw_KEYS_EXT_TRIG || params.new_key[chan] || ((params.key_sw[chan] == ksw_NOTE) && !params.note_on[chan]) )
 	{
 		// Calculate pitch multiplier from individual jack 1V/oct CV
@@ -1197,7 +1202,7 @@ void update_pitch(uint8_t chan)
 	}
 
 	// Apply fine-tuning
-	calc_params.pitch[chan] = _CLAMP_F(calc_params.qtz_freq[chan] * calc_params.tuning[chan], F_MIN_FREQ, F_MAX_FREQ);
+	calc_params.pitch[chan_input] = _CLAMP_F(calc_params.qtz_freq[chan] * calc_params.tuning[chan_input], F_MIN_FREQ, F_MAX_FREQ);
 
 	update_wt_head_pos_inc(chan);
 }
@@ -1430,6 +1435,7 @@ void update_finetune(int16_t tmp)
 				params.finetune[i] = finetune[i];
 				if (finetune[i]==0)	do_resync_osc+=(1<<i);
 				compute_tuning(i);
+				start_ongoing_display_finetune();
 			}
 		}
 	}
@@ -1510,6 +1516,7 @@ void spread_finetune(int16_t tmp)
 				do_resync_osc += (1<<i);
 
 			compute_tuning(i);
+			start_ongoing_display_finetune();
 		}
 	}
 
@@ -1539,8 +1546,6 @@ void compute_tuning (uint8_t chan){
 			calc_params.tuning[chan] /= f_scaling_finetune;
 		}
 	}
-
-	start_ongoing_display_finetune();
 }
 
 

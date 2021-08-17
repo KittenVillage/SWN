@@ -126,6 +126,8 @@ void init_lfos(void)
 			lfos.phase[i] = calc_lfo_phase(lfos.phase_id[i]);
 
 			lfos.trig_armed[i] = 0;
+			lfos.fugue_armed[i] = 0;
+
 		}
 	}
 
@@ -197,6 +199,7 @@ void init_lfo_object(o_lfos *t_lfo){
 
 		// flags
 		t_lfo->trig_armed[i] 				= 0;
+		t_lfo->fugue_armed[i]				= 0;
 
 		t_lfo->to_vca_buf[i] 				= t_lfo->to_vca[i];
 	}

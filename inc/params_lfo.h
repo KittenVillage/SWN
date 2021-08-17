@@ -65,6 +65,7 @@ enum lfoModes{
 	lfot_SHAPE,
 	lfot_GATE,
 	lfot_TRIG,
+	lfot_FUGUE,
 
 	NUM_LFO_MODES
 };
@@ -115,6 +116,7 @@ typedef struct o_lfos
 	//Probably can be made into statics
 	uint8_t 		trig_armed 			[NUM_CHANNELS];
 	uint8_t  		trigout 			[NUM_CHANNELS];
+	uint8_t 		fugue_armed 		[NUM_CHANNELS];
 
 } o_lfos;
 

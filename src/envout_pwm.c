@@ -39,6 +39,7 @@
 #include "ui_modes.h"
 
 extern o_params 	params;
+extern o_calc_params 	calc_params;
 extern o_lfos 		lfos;
 extern o_led_cont 	led_cont;
 extern enum UI_Modes ui_mode;
@@ -219,6 +220,41 @@ void update_envout_pwm(void){
 			lfos.envout_pwm[j] = lfos.trigout[j] * PWM_MAX * lfos.gain[j];
 		} 
 
+		else if (lfos.mode[j] == lfot_FUGUE) {
+			if (envout_buf == 0.0f) {
+				lfos.fugue_armed[j] = 1;
+			} 
+			else if (envout_buf > 0.0f && lfos.fugue_armed[j] == 1) {
+				if (j == 2) {
+					if (calc_params.fugue_step[j] <= 0)  {
+						calc_params.fugue_step[j] = NUM_STEPS;
+					}
+					calc_params.fugue_step[j]--;
+					calc_params.fugue_step[j] %= NUM_STEPS;
+				} else if (j == 3) {
+					if (calc_params.fugue_direction[j] == 0) {
+						calc_params.fugue_step[j]++;
+						if (calc_params.fugue_step[j] >= NUM_STEPS) {
+							calc_params.fugue_direction[j] = 1;
+						}
+						calc_params.fugue_step[j] %= NUM_STEPS;
+					} else {
+						calc_params.fugue_step[j]--;
+						if (calc_params.fugue_step[j] <= 0) {
+							calc_params.fugue_direction[j] = 0;
+						}
+						calc_params.fugue_step[j] %= NUM_STEPS;
+					}
+				} else {
+					calc_params.fugue_step[j]++;
+					calc_params.fugue_step[j] %= NUM_STEPS;
+				}
+				lfos.fugue_armed[j] = 0;
+			}
+			lfos.envout_pwm[j] = envout_buf;
+			lfos.out_lpf[j]  = (float)(lfos.envout_pwm[j]) / (float)(PWM_MAX);
+			lfos.envout_pwm[j] *= lfos.gain[j];
+		}
 		else //lfos.mode[j] == lfot_SHAPE
 		{
 			lfos.envout_pwm[j] = envout_buf;

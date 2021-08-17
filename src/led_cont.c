@@ -112,7 +112,7 @@ const uint16_t LFO_BANK_COLOR[28][3]= {
 	{ 1	, 318	, 947	},
 	{ 1	, 94	, 950	},
 	{ 1	, 12	, 954	},
-	{ 1	, 1	, 379	},
+	{ 1	, 1		, 379	},
 					
 	{ 941	, 366	, 954	},				// Shades of Pink
 	{ 935	, 116	, 928	},
@@ -319,6 +319,11 @@ void update_button_leds(void){
 							else if (lfos.mode[i]==lfot_GATE){
 								brightness = (tri_phase > tri_period) ? 1.0 : 0.0;
 								color = ledc_LIGHT_BLUE;
+							}
+							else if (lfos.mode[i]==lfot_FUGUE) {
+								tri_wave = _FOLD_F(tri_phase, tri_period);
+								brightness = (float)(tri_wave/tri_period);
+								color = ledc_PURPLE;
 							}
 							else{ //lfot_SHAPE
 								tri_wave = _FOLD_F(tri_phase, tri_period);
