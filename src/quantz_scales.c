@@ -51,30 +51,29 @@
 
 
 const enum colorCodes qtz_scale_colors[NUM_QTZ_SCALES] = {
-	ledc_WHITE,					// NO QTZ
-	ledc_PURPLE,				// SEMITONE
-	ledc_YELLOW,				// MAJOR
-	ledc_DIM_YELLOW,			// MINOR HARMONIC
-	ledc_DEEP_BLUE,				// MAJOR_PENTATONIC
-	ledc_MED_BLUE,				// MINOR_PENTATONIC
-	ledc_GREEN,					// OCTATONIC1
-	ledc_DIM_GREEN,				// OCTATONIC2
-	ledc_FULLRED,				// LYDIAN
-	ledc_DIM_RED,				// MIXOLYDIAN
-	ledc_GOLD,					// DORIAN
-	ledc_BUTTERCUP,				// LOCRIAN
-	ledc_BLUE,					// AEOLIAN
-	ledc_FUSHIA,				// BEBOP MAJOR
-	ledc_CORAL,				// BEBOP MINOR
-	ledc_PINK				// BLUES
+	ledc_LIGHT_BLUE,					// NO QTZ
+	ledc_BRIGHTPINK,				// MAJOR
+	ledc_CORAL,			// MINOR HARMONIC
+	ledc_BLUE,				// SEMITONES
+	ledc_GREEN,				// MAJOR_PENTATONIC
+	ledc_AQUA,				// MINOR_PENTATONIC
+	ledc_GOLD,					// OCTATONIC1
+	ledc_BUTTERCUP,					// OCTATONIC2
+	ledc_RED,				// LYDIAN
+	ledc_FULLRED,				// MIXOLYDIAN
+	ledc_PINK,					// DORIAN
+	ledc_FUSHIA,				// LOCRIAN
+	ledc_PURPLE,				// AEOLIAN
+	ledc_BRIGHT_BLUE,				// BEBOP MAJOR
+	ledc_MED_BLUE,				// BEBOP MINOR
+	ledc_DEEP_BLUE				// BLUES
 };
-
 
 const uint8_t num_qtz_steps[NUM_QTZ_SCALES] = {
 	1,					// NO QTZ
-	12,					// SEMITONES
 	7,					// MAJOR
 	7,					// MINOR HARMONIC
+	12,					// SEMITONES
 	5,					// MAJOR_PENTATONIC
 	5,					// MINOR_PENTATONIC
 	8,					// OCTATONIC1
@@ -97,64 +96,91 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		0
 	},
 
-// SEMITONES
-        {
-		16.3516015625,  // C0
-		17.32390625,    // C#
-		18.3540234375,  // D
-		19.4454296875,  // D#
-		20.60171875,    // E
-		21.8267578125,  // F
-		23.1246484375,  // F#
-		24.4997265625,  // G
-		25.9565625,     // G#
-		27.50,          // A
-		29.135234375,   // A#
-		30.8676953125   // B
-	},
-
 // MAJOR
 	{
-		16.3516015625,	// C
-		18.3540234375,	// D
-		20.60171875,	// E
-		21.8267578125,	// F
-		24.4997265625,	// G
-		27.50,		// A
-		30.8676953125	// B
+		// 16.35, // C0 2109.89
+		// 18.35, // D0 1879.69
+		// 20.60, // E0 1674.62
+		// 21.83, // F0 1580.63
+		// 24.50, // G0 1408.18
+		// 27.50, // A0 1254.55
+		// 30.87 // B0 1117.67
+		16.3516015625,
+		18.3540234375,
+		20.60171875,
+		21.8267578125,
+		24.4997265625,
+		27.50,
+		30.8676953125
+
 	},
 
-// MINOR HARMONIC (AEOLIAN)
+// MINOR HARMONIC
 	{
-		16.3516015625,	// C
-		18.3540234375,	// D
-		19.4454296875,	// D#
-		21.8267578125,	// F
-		24.4997265625,	// G
-		25.9565625,	// G#
-		30.8676953125	// B
+		// 16.35, // C0	2109.89
+		// 18.35, // D0	1879.69
+		// 19.45, // Eb0 	1774.20
+		// 21.83, // F0	1580.63
+		// 24.50, // G0	1408.18
+		// 25.96, // Ab0 	1329.14
+		// 30.87  // B0	1117.67
+		16.3516015625,
+		18.3540234375,
+		19.4454296875,
+		21.8267578125,
+		24.4997265625,
+		25.9565625,
+		30.8676953125
+	},
+
+// SEMITONES
+	{
+		// 16.35, 			// C0
+		// 17.32222159,	// C#
+		// 18.35225449,	// D
+		// 19.44353633,	// D#
+		// 20.59970917,	// E
+		// 21.82463162,	// F
+		// 23.12239174,	// F#
+		// 24.49732071,	// G
+		// 25.9540072,		// G#
+		// 27.49731278,	// A
+		// 29.13238808,	// A#
+		// 30.86469002		// B
+		16.3516015625,
+		17.32390625,
+		18.3540234375,
+		19.4454296875,
+		20.60171875,
+		21.8267578125,
+		23.1246484375,
+		24.4997265625,
+		25.9565625,
+		27.50,
+		29.135234375,
+		30.8676953125
 	},
 
 // MAJOR_PENTATONIC
-        {
+	{
 		16.3516015625,	// C
 		18.3540234375,	// D
 		20.60171875,	// E
 		24.4997265625,	// G
 		27.50		// A
-        },
-    
+	},
+
 //  MINOR_PENTATONIC   
-        {
+	{
 		16.3516015625,	// C
 		19.4454296875,	// D#
 		21.8267578125,	// F
 		24.4997265625,	// G
 		29.135234375	// A#
-        },
+	},
 
 // OCTATONIC 1 (whole half Diminished)
-        {
+	{
 		16.3516015625,	// C
 		18.3540234375,	// D
 		19.4454296875,	// D#
@@ -163,10 +189,10 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		25.9565625,	// G#
 		27.50,		// A
 		30.8676953125	// B
-        },
+	},
 
 // OCTATONIC2 (half whole Diminished)
-        {
+	{
 		16.3516015625,	// C
 		17.32390625,	// C#
 		19.4454296875,	// D#
@@ -175,10 +201,10 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		24.4997265625,	// G
 		27.50,		// A
 		29.135234375	// A#
-        },
+	},
 
 // LYDIAN
-        {
+	{
 		16.3516015625,	// C
 		18.3540234375,	// D
 		20.60171875,	// E
@@ -186,10 +212,10 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		24.4997265625,	// G
 		27.50,		// A
 		30.8676953125	// B
-        },
-    
+	},
+
 // MIXOLYDIAN
-        {
+	{
 		16.3516015625,	// C
 		18.3540234375,	// D
 		20.60171875,	// E
@@ -197,9 +223,10 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		24.4997265625,	// G
 		27.50,		// A
 		29.135234375	// A#
-        },
+	},
+
 // DORIAN
-        {
+	{
 		16.3516015625,  // C0
 		18.3540234375,  // D
 		19.4454296875,  // D#
@@ -210,7 +237,7 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 	},
 
 // LOCRIAN
-        {
+	{
 		16.3516015625,  // C0
 		17.32390625,    // C#
 		19.4454296875,  // D#
@@ -230,8 +257,9 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		25.9565625,     // G#
 		29.135234375,   // A#
 	},
+
 // BEBOP MAJOR
-        {
+	{
 		16.3516015625,  // C0
 		18.3540234375,  // D
 		20.60171875,    // E
@@ -241,8 +269,9 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		27.50,          // A
 		30.8676953125   // B
 	},
+
 // BEBOP MINOR
-        {
+	{
 		16.3516015625,  // C0
 		18.3540234375,  // D
 		19.4454296875,  // D#
@@ -252,18 +281,17 @@ const float qtz_scales[NUM_QTZ_SCALES][MAX_NUM_QTZ_STEPS] = {
 		27.50,          // A
 		29.135234375,   // A#
 	},
+
 // BLUES
-        {
+	{
 		16.3516015625,  // C0
 		18.3540234375,  // D
 		19.4454296875,  // D#
 		21.8267578125,  // F
 		24.4997265625,  // G
 		25.9565625,     // G#
-		30.8676953125   // Bcd boot
+		30.8676953125   // B
 	}
-
-
 };
 
 
